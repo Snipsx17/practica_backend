@@ -31,6 +31,17 @@ router.get('/id/:id', async (req, res, next) => {
 });
 
 // POST
+router.post('/', async (req, res, next) => {
+  try {
+    const anuncioData = req.body;
+    const nuevoAnuncio = Anuncio(anuncioData);
+    const anuncioGuardado = await nuevoAnuncio.save();
+
+    res.json({ result: anuncioGuardado });
+  } catch (error) {
+    next(error);
+  }
+});
 
 // PUT
 
