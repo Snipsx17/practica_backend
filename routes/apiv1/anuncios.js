@@ -44,7 +44,15 @@ router.post('/', async (req, res, next) => {
 });
 
 // PUT
+router.put('/:id', async (req, res, next) => {
+  const id = req.params.id;
+  const anuncioData = req.body;
+  const anuncioActualizado = await Anuncio.findByIdAndUpdate(id, anuncioData, {
+    new: true,
+  });
 
+  res.json(anuncioActualizado);
+});
 // DELETE
 
 module.exports = router;
