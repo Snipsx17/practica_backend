@@ -46,3 +46,9 @@ Form the folder of the server:
 ## API Endpoint
 
 ### GET /apiv1/anuncios/
+
+Lista todos los anuncios
+http://localhost:3000/apiv1/anuncios
+
+Busqueda por ID
+http://localhost:3000/apiv1/anuncios/id/6522f109bccfd33825b3fa31

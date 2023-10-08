@@ -22,6 +22,7 @@ app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 // API routes
 app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios'));
+app.use('/public', express.static('public'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
