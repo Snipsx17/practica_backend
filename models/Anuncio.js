@@ -8,8 +8,12 @@ const anuncioSchema = mongoose.Schema({
   tags: [String],
 });
 
-anuncioSchema.statics.lista = function (nombre) {
+anuncioSchema.statics.lista = function (nombre, fields, skip, limit, sort) {
   const query = Anuncio.find(nombre);
+  query.skip(skip);
+  query.limit(limit);
+  query.sort(sort);
+  query.select(fields);
 
   return query.exec();
 };
