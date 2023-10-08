@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const anuncionSchema = mongoose.Schema({
+const anuncioSchema = mongoose.Schema({
   nombre: String,
   venta: Boolean,
   precio: Number,
@@ -8,6 +8,12 @@ const anuncionSchema = mongoose.Schema({
   tags: [String],
 });
 
-const Anuncio = mongoose.model('Anuncio', anuncionSchema);
+anuncioSchema.statics.lista = function (nombre) {
+  const query = Anuncio.find(nombre);
+
+  return query.exec();
+};
+
+const Anuncio = mongoose.model('Anuncio', anuncioSchema);
 
 module.exports = Anuncio;

@@ -1,0 +1,74 @@
+{
+  "anuncios": [
+    {
+      "nombre": "Bicicleta",
+      "venta": true,
+      "precio": 230.15,
+      "foto": "bici.jpg",
+      "tags": ["lifestyle", "motor"]
+    },
+    {
+      "nombre": "iPhone 15",
+      "venta": false,
+      "precio": 600.0,
+      "foto": "iphone.jpg",
+      "tags": ["lifestyle", "mobile"]
+    },
+    {
+      "nombre": "Apartamento para 4",
+      "venta": false,
+      "precio": 1500.0,
+      "foto": "apartamento.jpg",
+      "tags": ["lifestyle"]
+    },
+    {
+      "nombre": "Casa en venta",
+      "venta": true,
+      "precio": 350000.0,
+      "foto": "casa-venta.jpg",
+      "tags": ["lifestyle"]
+    },
+    {
+      "nombre": "Coche clasico",
+      "venta": true,
+      "precio": 900.0,
+      "foto": "coche-clasico.jpg",
+      "tags": ["lifestyle", "motor"]
+    },
+    {
+      "nombre": "Lancha",
+      "venta": false,
+      "precio": 500.0,
+      "foto": "lancha.jpg",
+      "tags": ["lifestyle"]
+    },
+    {
+      "nombre": "Mesa comedor",
+      "venta": true,
+      "precio": 80.0,
+      "foto": "mesa-cocmedor.jpg",
+      "tags": ["lifestyle", "work"]
+    },
+    {
+      "nombre": "Ordenador",
+      "venta": false,
+      "precio": 300.0,
+      "foto": "ordenador.avif",
+      "tags": ["lifestyle", "work", "mobile"]
+    },
+    {
+      "nombre": "Peluches",
+      "venta": true,
+      "precio": 20.0,
+      "foto": "iphone.jpg",
+      "tags": ["lifestyle"]
+    },
+    {
+      "nombre": "zapatos",
+      "venta": true,
+      "precio": 150.0,
+      "foto": "zapatos.jpg",
+      "tags": ["lifestyle", "work"]
+    }
+  ]
+}
