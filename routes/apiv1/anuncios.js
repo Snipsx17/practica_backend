@@ -54,5 +54,13 @@ router.put('/:id', async (req, res, next) => {
   res.json(anuncioActualizado);
 });
 // DELETE
-
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    await Anuncio.deleteOne({ _id: id });
+    res.json({ Result: 'Anuncio Eliminado' });
+  } catch (err) {
+    next(err);
+  }
+});
 module.exports = router;
