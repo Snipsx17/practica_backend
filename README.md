@@ -52,3 +52,7 @@ http://localhost:3000/apiv1/anuncios
 
 Busqueda por ID
 http://localhost:3000/apiv1/anuncios/id/6522f109bccfd33825b3fa31
+
+### POST /apiv1/anuncios/{id}
+
+Enviar una peticion POST con los datos en el cuerpo de la peticion

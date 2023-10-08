@@ -5,11 +5,18 @@ const Anuncio = require('../../models/Anuncio');
 // GET
 router.get('/', async (req, res, next) => {
   try {
+    //filters.nombre = ;
     const filtroNombre = req.query.nombre;
+    const filtroVenta = req.query.venta;
+    const filtroTag = req.query.tag;
 
     const filtro = {};
 
-    if (filtroNombre) filtro.nombre = filtroNombre;
+    //if (filtroNombre) filtro.nombre = filtroNombre;
+    if (filtroNombre) filtro.nombre = new RegExp('^' + filtroNombre, 'i');
+    if (filtroVenta) filtro.venta = filtroVenta;
+    if (filtroTag) filtro.tags = filtroTag;
+    console.log(filtro);
 
     const anuncios = await Anuncio.lista(filtro);
     res.json(anuncios);
