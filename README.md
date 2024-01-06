@@ -2,7 +2,7 @@
 
 Website and Aplication.
 
-##install
+###Install
 
 Install dependencies:
 
@@ -10,18 +10,19 @@ Install dependencies:
 $ npm install
 ```
 
-Review DB conection ./lib/connectMongoose.js
+### Init DB
 
-## Init DB
+_Review DB conection ./lib/connectMongoose.js_
 
 Create schema and load initial data
 
 ```sh
 ## this command delete all the data in DB and add default data
 $ npm run initDB.js
+## press y for accept or n for decline
 ```
 
-## Start
+### Start
 
 In production:
 
@@ -35,7 +36,7 @@ In development:
 npm run dev
 ```
 
-## Start a MongoDB Server in MacOS or Linux
+### Start a MongoDB Server in MacOS or Linux
 
 Form the folder of the server:
 
@@ -43,7 +44,7 @@ Form the folder of the server:
 ./bin/mongod -dbpath ./data/db
 ```
 
-## API Endpoint
+### API Endpoint's
 
 ### GET /apiv1/anuncios/
 
