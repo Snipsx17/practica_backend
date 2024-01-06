@@ -1,5 +1,5 @@
 {
-  "anuncios": [
+  "adverts": [
     {
       "nombre": "Bicicleta",
       "venta": true,
@@ -70,5 +70,9 @@
       "foto": "zapatos.jpg",
       "tags": ["lifestyle", "work"]
     }
+  ],
+  "users": [
+    { "email": "user@example.com", "password": "1234" },
+    { "email": "admin@example.com", "password": "1234" }
   ]
 }
