@@ -47,7 +47,7 @@ class AdvertsController {
     try {
       const advertData = req.body;
       advertData.owner = req.userID;
-      advertData.imagen = req.file.filename;
+      advertData.imagen = `/public/images/anuncios/${req.file.filename}`;
       const newAdvert = Advert(advertData);
       const anuncioGuardado = await newAdvert.save();
 
