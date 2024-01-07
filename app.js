@@ -28,8 +28,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 const loginController = new LoginController();
 const advertsControllers = new AdvertsController();
 
-app.use('/', require('./routes/index'));
-app.use('/users', require('./routes/users'));
 // API routes
 app.get('/apiv1/anuncios', authJwtMiddelware, advertsControllers.get);
 app.get(
@@ -44,6 +42,11 @@ app.post(
   advertsControllers.createAd
 );
 app.post('/apiv1/authenticate', loginController.loginJWT);
+
+// website
+app.use('/', require('./routes/index'));
+
+// resourses
 app.use('/public', express.static('public'));
 
 // catch 404 and forward to error handler

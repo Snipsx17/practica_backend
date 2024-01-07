@@ -12,6 +12,14 @@ $ npm install
 
 ### Init DB
 
+Start a MongoDB Server in MacOS or Linux
+
+Form the folder of the server:
+
+```sh
+./bin/mongod -dbpath ./data/db
+```
+
 _Review DB conection ./lib/connectMongoose.js_
 
 Create schema and load initial data
@@ -19,7 +27,7 @@ Create schema and load initial data
 ```sh
 ## this command delete all the data in DB and add default data
 $ npm run initDB.js
-## press y for accept or n for decline
+## press 'y' for accept or 'n' for decline
 ```
 
 ### Start
@@ -36,24 +44,38 @@ In development:
 npm run dev
 ```
 
-### Start a MongoDB Server in MacOS or Linux
-
-Form the folder of the server:
-
-```sh
-./bin/mongod -dbpath ./data/db
-```
-
 ### API Endpoint's
 
-### GET /apiv1/anuncios/
+**GET /apiv1/authenticate**
 
-Lista todos los anuncios
+send creadencials on body format '_x-www-form-urlencoded_'
+
+you will recibe a JWT token
+
+```sh
+    {token: tokenJWT}
+```
+
+on protected enpoint's you should set the 'Authorization' header whith the token provided
+
+**GET /apiv1/anuncios/ 🔐**
+_List all adverts_
 http://localhost:3000/apiv1/anuncios
 
-Busqueda por ID
-http://localhost:3000/apiv1/anuncios/id/6522f109bccfd33825b3fa31
+**GET /apiv1/anuncios/id/{advertID} 🔐**
+_Search advert by ID_
+http://localhost:3000/apiv1/anuncios/id/{advertID}
 
-### POST /apiv1/anuncios/{id}
+**POST /apiv1/anuncios 🔐**
+_Create advert_
+Send a POST peticion with the body on 'form-data', fields required:
 
-Enviar una peticion POST con los datos en el cuerpo de la peticion
+```js
+{
+    nombre: string,
+    venta: boolean,
+    precio: number,
+    imagen: file,
+    tags: [tags]
+}
+```
