@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
@@ -7,13 +9,16 @@ const userSchema = mongoose.Schema({
   password: String,
 });
 
-userSchema.statics.hashPassword = async (plainTextPassword) => {
-  const saltRounds = 5;
+userSchema.statics.hashPassword = async function (plainTextPassword) {
   try {
-    return await bcrypt.hash(plainTextPassword, saltRounds);
+    return await bcrypt.hash(plainTextPassword, process.env.SALT_ROUND_HASH);
   } catch (error) {
     console.log('error on password hash', error);
   }
+};
+
+userSchema.methods.login = function (password) {
+  return bcrypt.compare(password, this.password);
 };
 
 // modelo

@@ -1,8 +1,11 @@
+require('dotenv').config();
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const LoginController = require('./controllers/LoginControllers');
 
 var app = express();
 
@@ -18,10 +21,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// instancias
+const loginController = new LoginController();
+
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 // API routes
 app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios'));
+app.post('/apiv1/authenticate', loginController.loginJWT);
 app.use('/public', express.static('public'));
 
 // catch 404 and forward to error handler
@@ -36,10 +43,9 @@ app.use(function (err, req, res, next) {
     err.message = `Error en ${errorInfo.location} en el parametro ${errorInfo.path} ${errorInfo.msg}`;
   }
 
-  res.status(err.status || 500);
-
   if (req.originalUrl.startsWith('/apiv1/')) {
     res.json({ error: err.message });
+    return;
   }
   // set locals, only providing error in development
   res.locals.message = err.message;
