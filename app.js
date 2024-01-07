@@ -36,6 +36,7 @@ app.get(
   authJwtMiddelware,
   advertsControllers.getAdById
 );
+app.post('/apiv1/anuncios', authJwtMiddelware, advertsControllers.createAd);
 app.post('/apiv1/authenticate', loginController.loginJWT);
 app.use('/public', express.static('public'));
 

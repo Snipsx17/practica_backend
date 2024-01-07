@@ -42,6 +42,19 @@ class AdvertsController {
       next(createError(404, 'Advert not found'));
     }
   }
+
+  async createAd(req, res, next) {
+    try {
+      const advertData = req.body;
+      advertData.owner = req.userID;
+      const newAdvert = Advert(advertData);
+      const anuncioGuardado = await newAdvert.save();
+
+      res.json({ result: anuncioGuardado });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = AdvertsController;

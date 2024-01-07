@@ -6,6 +6,7 @@ const anuncioSchema = mongoose.Schema({
   precio: Number,
   foto: String,
   tags: [String],
+  owner: { ref: 'User', type: mongoose.Schema.Types.ObjectId },
 });
 
 anuncioSchema.statics.lista = function (nombre, fields, skip, limit, sort) {
