@@ -30,6 +30,14 @@ $ npm run initDB.js
 ## press 'y' for accept or 'n' for decline
 ```
 
+### env
+
+Copy the file .env.example in the root project
+
+```sh
+cp .env.example .env
+```
+
 ### Start
 
 In production:
