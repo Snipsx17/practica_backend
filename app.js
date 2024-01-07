@@ -6,6 +6,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const LoginController = require('./controllers/LoginControllers');
+const AdvertsController = require('./controllers/AdvertsControllers');
+const authJwtMiddelware = require('./middelwares/authJwtMiddelware');
 
 var app = express();
 
@@ -23,11 +25,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // instancias
 const loginController = new LoginController();
+const advertsControllers = new AdvertsController();
 
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 // API routes
-app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios'));
+app.get('/apiv1/anuncios', authJwtMiddelware, advertsControllers.get);
 app.post('/apiv1/authenticate', loginController.loginJWT);
 app.use('/public', express.static('public'));
 
