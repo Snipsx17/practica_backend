@@ -31,6 +31,11 @@ app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 // API routes
 app.get('/apiv1/anuncios', authJwtMiddelware, advertsControllers.get);
+app.get(
+  '/apiv1/anuncios/id/:id',
+  authJwtMiddelware,
+  advertsControllers.getAdById
+);
 app.post('/apiv1/authenticate', loginController.loginJWT);
 app.use('/public', express.static('public'));
 

@@ -1,4 +1,5 @@
 const Advert = require('../models/Advert');
+const createError = require('http-errors');
 
 class AdvertsController {
   async get(req, res, next) {
@@ -23,6 +24,22 @@ class AdvertsController {
       res.json(anuncios);
     } catch (error) {
       next(error);
+    }
+  }
+
+  async getAdById(req, res, next) {
+    try {
+      const id = req.params.id;
+      const response = await Advert.findById(id);
+
+      if (!response) {
+        next(createError(404, 'Advert not found'));
+        return;
+      }
+
+      res.json(response);
+    } catch (error) {
+      next(createError(404, 'Advert not found'));
     }
   }
 }
