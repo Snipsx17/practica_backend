@@ -4,7 +4,7 @@ const anuncioSchema = mongoose.Schema({
   nombre: String,
   venta: Boolean,
   precio: Number,
-  foto: String,
+  imagen: String,
   tags: [String],
   owner: { ref: 'User', type: mongoose.Schema.Types.ObjectId },
 });

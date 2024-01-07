@@ -8,6 +8,7 @@ var logger = require('morgan');
 const LoginController = require('./controllers/LoginControllers');
 const AdvertsController = require('./controllers/AdvertsControllers');
 const authJwtMiddelware = require('./middelwares/authJwtMiddelware');
+const upload = require('./lib/uploadConfig');
 
 var app = express();
 
@@ -36,7 +37,12 @@ app.get(
   authJwtMiddelware,
   advertsControllers.getAdById
 );
-app.post('/apiv1/anuncios', authJwtMiddelware, advertsControllers.createAd);
+app.post(
+  '/apiv1/anuncios',
+  authJwtMiddelware,
+  upload.single('imagen'),
+  advertsControllers.createAd
+);
 app.post('/apiv1/authenticate', loginController.loginJWT);
 app.use('/public', express.static('public'));
 
