@@ -10,6 +10,16 @@ Install dependencies:
 $ npm install
 ```
 
+### env
+
+Copy the file .env.example in the root project
+
+```sh
+cp .env.example .env
+```
+
+_Create your variables_
+
 ### Init DB
 
 Start a MongoDB Server in MacOS or Linux
@@ -26,16 +36,8 @@ Create schema and load initial data
 
 ```sh
 ## this command delete all the data in DB and add default data
-$ npm run initDB.js
+$ npm run initDB
 ## press 'y' for accept or 'n' for decline
-```
-
-### env
-
-Copy the file .env.example in the root project
-
-```sh
-cp .env.example .env
 ```
 
 ### Start
@@ -51,6 +53,14 @@ In development:
 ```sh
 npm run dev
 ```
+
+### Start resize image service
+
+```js
+npm run resize-service
+```
+
+When you create a new advert this service create a thumbnail of the image in _./public/images/anuncios/thumbnails_
 
 ### API Endpoint's
 
