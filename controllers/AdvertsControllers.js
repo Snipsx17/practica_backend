@@ -1,5 +1,6 @@
 const Advert = require('../models/Advert');
 const createError = require('http-errors');
+const resizeImage = require('../lib/resizeImageConfig');
 
 class AdvertsController {
   async get(req, res, next) {
@@ -46,10 +47,12 @@ class AdvertsController {
   async createAd(req, res, next) {
     try {
       const advertData = req.body;
+      const path = './public/images/anuncios/';
       advertData.owner = req.userID;
-      advertData.imagen = `/public/images/anuncios/${req.file.filename}`;
+      advertData.imagen = `${path}${req.file.filename}`;
       const newAdvert = Advert(advertData);
       const anuncioGuardado = await newAdvert.save();
+      resizeImage(req.file.filename);
 
       res.json({ result: anuncioGuardado });
     } catch (error) {
