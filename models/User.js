@@ -11,7 +11,10 @@ const userSchema = mongoose.Schema({
 
 userSchema.statics.hashPassword = async function (plainTextPassword) {
   try {
-    return await bcrypt.hash(plainTextPassword, process.env.SALT_ROUND_HASH);
+    return await bcrypt.hash(
+      plainTextPassword,
+      Number(process.env.SALT_ROUND_HASH)
+    );
   } catch (error) {
     console.log('error on password hash', error);
   }
