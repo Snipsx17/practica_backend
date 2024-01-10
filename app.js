@@ -9,6 +9,7 @@ const LoginController = require('./controllers/LoginControllers');
 const HomeController = require('./controllers/HomeController');
 const AdvertsController = require('./controllers/AdvertsControllers');
 const ProductController = require('./controllers/ProductController');
+const AboutController = require('./controllers/AboutController');
 const authJwtMiddelware = require('./middelwares/authJwtMiddelware');
 const upload = require('./lib/uploadConfig');
 
@@ -31,6 +32,7 @@ const loginController = new LoginController();
 const advertsControllers = new AdvertsController();
 const homeController = new HomeController();
 const productController = new ProductController();
+const aboutController = new AboutController();
 
 // resourses
 app.use('/public', express.static('public'));
@@ -52,6 +54,7 @@ app.post('/apiv1/authenticate', loginController.loginJWT);
 
 // website
 app.get('/', homeController.index);
+app.get('/about', aboutController.index);
 app.get('/product/:productId', productController.productDetail);
 
 // catch 404
