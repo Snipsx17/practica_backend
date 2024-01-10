@@ -1,11 +1,56 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<% include header %>
+<!-- Header-->
+<header class="bg-dark py-1">
+  <div class="container px-4 px-lg-5 my-2">
+    <div class="text-center text-white">
+      <h1 class="display-6 fw-bold">Start shop now</h1>
+      <p class="lead fw-normal text-white-50 mb-0">Welcome to Nodepop</p>
+    </div>
+  </div>
+</header>
+<!-- Section-->
+<section class="py-5">
+  <div class="container px-4 px-lg-5 mt-5">
+    <div
+      class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
+    >
+      <% adverts.forEach( advert => { %>
+      <a
+        href="/product/<%= advert._id %>"
+        class="text-decoration-none text-reset"
+      >
+        <div class="col mb-5">
+          <div class="card h-100">
+            <!-- Product image-->
+            <img class="card-img-top" src="<%= advert.imagen %>" alt="..." />
+            <!-- Product details-->
+            <div class="card-body p-4">
+              <div class="text-center">
+                <!-- Product name-->
+                <h5 class="fw-bolder"><%= advert.nombre %></h5>
+                <!-- Product reviews-->
+                <div class="d-flex justify-content-center mb-2">
+                  <span
+                    class="badge rounded-pill"
+                    style="background-color: #a0d8b3"
+                    ><%= advert.venta ? 'For sale' : 'For Buy' %></span
+                  >
+                </div>
+                <!-- Product price-->
+                Price: <%= advert.precio %> EUR
+              </div>
+            </div>
+            <!-- Product actions-->
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+              <div class="text-center">
+                <small>TAGS: <%= advert.tags.join(', ').toUpperCase() %></small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </a>
+    </div>
+  </div>
+</section>
+<% include footer %>

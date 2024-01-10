@@ -1,0 +1,37 @@
+<% include header %>
+<!-- Header-->
+<header class="bg-dark py-1">
+  <div class="container px-4 px-lg-5 my-2">
+    <div class="text-center text-white">
+      <h1 class="display-6 fw-bold">
+        <%= product.nombre.charAt(0).toUpperCase() + product.nombre.slice(1) %>
+      </h1>
+    </div>
+  </div>
+</header>
+<!-- Product section-->
+<section class="py-5">
+  <div class="container px-4 px-lg-5 my-5">
+    <a href="/" class="d-block mb-3 text-decoration-none text-reset"><< Back</a>
+    <div class="row gx-4 gx-lg-5 align-items-center">
+      <div class="col-md-6">
+        <img
+          class="card-img-top mb-5 mb-md-0"
+          src="<%= product.imagen %>"
+          alt="product image"
+        />
+      </div>
+      <div class="col-md-6">
+        <div class="small mb-1">
+          <%= product.venta ? 'For sale' : 'For buy' %>
+        </div>
+        <h1 class="display-5 fw-bolder">Price: <%= product.precio %> EUR</h1>
+        <div class="fs-5 mb-5">
+          <span><%= product.tags.join(', ') %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% include footer %>

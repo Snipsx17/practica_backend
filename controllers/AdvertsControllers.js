@@ -47,7 +47,7 @@ class AdvertsController {
   async createAd(req, res, next) {
     try {
       const advertData = req.body;
-      const path = './public/images/anuncios/';
+      const path = '/images/anuncios/';
       advertData.owner = req.userID;
       advertData.imagen = `${path}${req.file.filename}`;
       const newAdvert = Advert(advertData);
