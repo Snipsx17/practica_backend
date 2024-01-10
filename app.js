@@ -6,7 +6,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const LoginController = require('./controllers/LoginControllers');
+const HomeController = require('./controllers/HomeController');
 const AdvertsController = require('./controllers/AdvertsControllers');
+const ProductController = require('./controllers/ProductController');
 const authJwtMiddelware = require('./middelwares/authJwtMiddelware');
 const upload = require('./lib/uploadConfig');
 
@@ -27,6 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // instancias
 const loginController = new LoginController();
 const advertsControllers = new AdvertsController();
+const homeController = new HomeController();
+const productController = new ProductController();
 
 // resourses
 app.use('/public', express.static('public'));
@@ -47,30 +51,37 @@ app.post(
 app.post('/apiv1/authenticate', loginController.loginJWT);
 
 // website
-app.use('/', require('./routes/index'));
+app.get('/', homeController.index);
+app.get('/product/:productId', productController.productDetail);
 
-// catch 404 and forward to error handler
+// catch 404
 app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
 app.use(function (err, req, res, next) {
+  const isAPI = req.originalUrl.indexOf('/api') === 0;
   if (err.array) {
-    const errorInfo = err.errors[0];
-    err.message = `Error en ${errorInfo.location} en el parametro ${errorInfo.path} ${errorInfo.msg}`;
+    err.status = 422;
+    const errInfo = err.array({ onlyFirstError: true })[0];
+    err.message = isAPI
+      ? { message: 'not valid', errors: err.mapped() }
+      : `not valid - ${errInfo.param} ${errInfo.msg}`;
   }
 
-  if (req.originalUrl.startsWith('/apiv1/')) {
+  err.status = err.status || 500;
+  res.status(err.status);
+
+  if (err.status && err.status >= 500) console.error(err);
+
+  if (isAPI) {
     res.json({ error: err.message });
     return;
   }
-  // set locals, only providing error in development
+
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
   res.render('error');
 });
 
