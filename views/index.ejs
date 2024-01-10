@@ -14,7 +14,7 @@
     <div
       class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
     >
-      <% adverts.forEach( advert => { %>
+      <% if(adverts.length > 0) { adverts.forEach( advert => { %>
       <a
         href="/product/<%= advert._id %>"
         class="text-decoration-none text-reset"
@@ -48,8 +48,10 @@
             </div>
           </div>
         </div>
-        <% }) %>
       </a>
+      <% })} else { %>
+      <h3>No advert's to show</h3>
+      <% } %>
     </div>
   </div>
 </section>
