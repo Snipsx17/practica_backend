@@ -13,6 +13,7 @@ main();
 // Functions
 async function main() {
   await new Promise((resolve) => connection.once('open', resolve));
+  let adminID = '';
 
   const confirmation = await confirmDelete(
     'Are you sure that you want to delete the entire DB and load default data? (Y/N)'
@@ -23,19 +24,11 @@ async function main() {
     process.exit();
   }
 
-  await initAdverts();
   await initUsers();
+  await initAdverts();
 
   // Close DB connection
   connection.close();
-}
-
-async function initAdverts() {
-  const deleted = await Advert.deleteMany();
-  console.log(`${deleted.deletedCount} adverts were deleted`);
-
-  const inserted = await Advert.insertMany(initData.adverts);
-  console.log(`${inserted.length} adverts created.`);
 }
 
 async function initUsers() {
@@ -52,6 +45,20 @@ async function initUsers() {
 
   const inserted = await User.insertMany(users);
   console.log(`${inserted.length} users created.`);
+}
+
+async function initAdverts() {
+  const deleted = await Advert.deleteMany();
+  console.log(`${deleted.deletedCount} adverts were deleted`);
+
+  const adminUser = await User.findOne({ email: 'admin@example.com' });
+  const adverts = initData.adverts.map((advert) => ({
+    ...advert,
+    owner: adminUser,
+  }));
+
+  const inserted = await Advert.insertMany(adverts);
+  console.log(`${inserted.length} adverts created.`);
 }
 
 async function confirmDelete(text) {
