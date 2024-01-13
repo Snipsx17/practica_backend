@@ -1,0 +1,87 @@
+<% include header %>
+<!-- Header-->
+<header class="bg-dark py-1 mb-5">
+  <div class="container px-4 px-lg-5 my-2">
+    <div class="text-center text-white">
+      <h1 class="display-6 fw-bold">Create New Advert</h1>
+    </div>
+  </div>
+</header>
+<section>
+  <div class="container px-4 mb-5 w-50">
+    <form method="POST" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="floatingInput">Name</label>
+        <input
+          type="text"
+          name="nombre"
+          class="form-control"
+          id="floatingInput"
+        />
+      </div>
+
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          value="true"
+          type="radio"
+          name="sale"
+          id="sale"
+        />
+        <label class="form-check-label" for="sale"> For sale </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          value="false"
+          type="radio"
+          name="sale"
+          id="buy"
+          checked
+        />
+        <label class="form-check-label" for="buy"> For buy </label>
+      </div>
+
+      <div class="mb-3">
+        <label for="floatingInput">Price</label>
+        <input
+          type="number"
+          name="precio"
+          class="form-control"
+          id="floatingInput"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="floatingInput">Image</label>
+        <input
+          type="file"
+          name="imagen"
+          accept="image/png, image/jpeg, image/jpg"
+          class="form-control"
+          id="floatingInput"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="floatingInput">Tags</label>
+        <small>Separate by comas (,)</small>
+        <input
+          type="text"
+          name="tags"
+          class="form-control"
+          id="floatingInput"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-success mt-3 px-4 py-2"
+        style="background-color: #a0d8b3; border-color: #a0d8b3"
+      >
+        Create
+      </button>
+    </form>
+  </div>
+</section>
+<% include footer %>

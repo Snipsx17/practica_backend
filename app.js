@@ -86,6 +86,13 @@ app.get('/login', loginController.index);
 app.post('/login', loginController.login);
 app.get('/logout', loginController.logout);
 app.get('/private', sessionAuthMiddelware, privateController.index);
+app.get('/create-advert', sessionAuthMiddelware, advertsControllers.index);
+app.post(
+  '/create-advert',
+  sessionAuthMiddelware,
+  upload.single('imagen'),
+  advertsControllers.createAdvertForm
+);
 app.get(
   '/product/:productId',
 

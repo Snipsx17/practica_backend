@@ -3,6 +3,10 @@ const createError = require('http-errors');
 const resizeImage = require('../lib/resizeImageConfig');
 
 class AdvertsController {
+  index(req, res, next) {
+    res.render('create-advert');
+  }
+
   async get(req, res, next) {
     try {
       //filters.nombre = ;
@@ -49,12 +53,29 @@ class AdvertsController {
       const advertData = req.body;
       const path = '/images/anuncios/';
       advertData.owner = req.userID;
-      advertData.imagen = `${req.file.filename}`;
+      advertData.imagen = `${path}/${req.file.filename}`;
       const newAdvert = Advert(advertData);
       const anuncioGuardado = await newAdvert.save();
       resizeImage(req.file.filename);
 
       res.json({ result: anuncioGuardado });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async createAdvertForm(req, res, next) {
+    try {
+      const advertData = req.body;
+      //advertData.tags = advertData.tags.split(',');
+      const path = '/images/anuncios/';
+      advertData.owner = req.session.userID;
+      advertData.imagen = `${path}/${req.file.filename}`;
+      const newAdvert = Advert(advertData);
+      await newAdvert.save();
+      resizeImage(req.file.filename);
+
+      res.redirect('/private');
     } catch (error) {
       next(error);
     }

@@ -4,70 +4,70 @@
       "nombre": "Bicicleta",
       "venta": true,
       "precio": 230,
-      "imagen": "bici.jpg",
+      "imagen": "/images/anuncios/bici.jpg",
       "tags": ["lifestyle", "motor"]
     },
     {
       "nombre": "iPhone 15",
       "venta": false,
       "precio": 600.0,
-      "imagen": "iphone.jpg",
+      "imagen": "/images/anuncios/iphone.jpg",
       "tags": ["lifestyle", "mobile"]
     },
     {
       "nombre": "Apartamento para 4",
       "venta": false,
       "precio": 1500.0,
-      "imagen": "apartamento.jpg",
+      "imagen": "/images/anuncios/apartamento.jpg",
       "tags": ["lifestyle"]
     },
     {
       "nombre": "Casa en venta",
       "venta": true,
       "precio": 350000.0,
-      "imagen": "casa-venta.jpg",
+      "imagen": "/images/anuncios/casa-venta.jpg",
       "tags": ["lifestyle"]
     },
     {
       "nombre": "Coche clasico",
       "venta": true,
       "precio": 900.0,
-      "imagen": "coche-clasico.jpg",
+      "imagen": "/images/anuncios/coche-clasico.jpg",
       "tags": ["lifestyle", "motor"]
     },
     {
       "nombre": "Lancha",
       "venta": false,
       "precio": 500.0,
-      "imagen": "lancha.jpg",
+      "imagen": "/images/anuncios/lancha.jpg",
       "tags": ["lifestyle"]
     },
     {
       "nombre": "Mesa comedor",
       "venta": true,
       "precio": 80.0,
-      "imagen": "mesa-comedor.jpeg",
+      "imagen": "/images/anuncios/mesa-comedor.jpeg",
       "tags": ["lifestyle", "work"]
     },
     {
       "nombre": "Ordenador",
       "venta": false,
       "precio": 300.0,
-      "imagen": "ordenador.avif",
+      "imagen": "/images/anuncios/ordenador.avif",
       "tags": ["lifestyle", "work", "mobile"]
     },
     {
       "nombre": "Peluches",
       "venta": true,
       "precio": 20.0,
-      "imagen": "iphone.jpg",
+      "imagen": "/images/anuncios/iphone.jpg",
       "tags": ["lifestyle"]
     },
     {
       "nombre": "zapatos",
       "venta": true,
       "precio": 150.0,
-      "imagen": "zapatos.jpg",
+      "imagen": "/images/anuncios/zapatos.jpg",
       "tags": ["lifestyle", "work"]
     }
   ],
