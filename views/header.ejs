@@ -117,10 +117,13 @@
             <li class="nav-item">
               <a class="nav-link" href="/about">About</a>
             </li>
+            <% if(session.userID) { %>
             <li class="nav-item">
               <a class="nav-link" href="/private">Private area</a>
             </li>
+            <% } %>
           </ul>
+          <% if(!session.userID) { %>
           <button
             type="button"
             class="btn btn-success"
@@ -130,6 +133,17 @@
               >Login <i class="bi bi-person"></i>
             </a>
           </button>
+          <% } else { %>
+          <button
+            type="button"
+            class="btn btn-success"
+            style="background-color: #a0d8b3; border-color: #a0d8b3"
+          >
+            <a href="/logout" class="text-decoration-none text-white"
+              >Logout<i class="bi bi-person"></i>
+            </a>
+          </button>
+          <% } %>
         </div>
       </div>
     </nav>

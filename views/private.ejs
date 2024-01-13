@@ -1,0 +1,49 @@
+<% include header %>
+<!-- Header-->
+<header class="bg-dark py-1 mb-5">
+  <div class="container px-4 px-lg-5 my-2">
+    <div class="text-center text-white">
+      <h1 class="display-6 fw-bold">Private zone</h1>
+      <p class="lead fw-normal text-white-50 mb-0">Welcome <%= email %></p>
+    </div>
+  </div>
+</header>
+<!-- About section-->
+<section id="about">
+  <div class="container px-4 mb-5">
+    <div class="row gx-4 justify-content-center">
+      <div class="col-lg-8">
+        <h2>Your adverts</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Precio</th>
+              <th scope="col">tags</th>
+              <th scope="col">Imagen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% adverts.forEach( advert => { %>
+            <tr>
+              <th scope="row"><%= advert._id %></th>
+              <td><%= advert.nombre %></td>
+              <td><%= advert.precio %> €</td>
+              <td><%= advert.tags.join(', ') %></td>
+              <td>
+                <img
+                  src="/images/anuncios/<%= advert.imagen %>"
+                  alt="product imagen"
+                  width="100px"
+                />
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+<% include footer %>

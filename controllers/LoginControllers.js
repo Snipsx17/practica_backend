@@ -31,6 +31,45 @@ class LoginController {
       next(error);
     }
   }
+
+  index(req, res, next) {
+    res.locals.wrongCredentials = '';
+    res.render('login');
+  }
+
+  async login(req, res, next) {
+    // extraigo el payload
+    const { email, password } = req.body;
+    if (req.session.userID) {
+      res.redirect('/private');
+      return;
+    }
+
+    // compruebo que el usuario existe en la BD
+    const user = await User.findOne({ email });
+    if (!user || !(await user.login(password))) {
+      // si no existe renderizo un mensaje o la contrase;a no es correcta
+      // renderizo un mensaje
+      res.locals.wrongCredentials = 'Wrong Credentials';
+      res.render('login');
+      return;
+    }
+    //
+    // si es correcta renderizo la pagina /private y guardo el id del usuario en la sesion
+    req.session.userID = user._id;
+    res.redirect('private');
+  }
+
+  logout(req, res, next) {
+    req.session.regenerate((error) => {
+      if (error) {
+        next(error);
+        return;
+      }
+
+      res.redirect('/');
+    });
+  }
 }
 
 module.exports = LoginController;
