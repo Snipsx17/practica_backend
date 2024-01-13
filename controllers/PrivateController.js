@@ -5,9 +5,15 @@ class PrivateController {
   async index(req, res, next) {
     try {
       const user = await User.findById(req.session.userID);
+
       if (!user) {
-        res.redirect('/');
-        return;
+        req.session.regenerate((error) => {
+          if (error) {
+            next(error);
+            return;
+          }
+          res.redirect('/');
+        });
       }
 
       const adverts = await Advert.find({ owner: user._id });
