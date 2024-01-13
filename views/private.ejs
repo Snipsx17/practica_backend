@@ -31,6 +31,7 @@
               <th scope="col">Precio</th>
               <th scope="col">tags</th>
               <th scope="col">Imagen</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -47,6 +48,16 @@
                   width="100px"
                 />
               </td>
+              <td>
+                <button type="button" class="btn btn-danger">
+                  <a
+                    href="javascript:void(0)"
+                    onclick="deleteAdvert('<%= advert.nombre %>', '<%= advert._id %>')"
+                    class="text-decoration-none text-white"
+                    >Delete <i class="bi bi-x-circle-fill"></i>
+                  </a>
+                </button>
+              </td>
             </tr>
             <% }) %>
           </tbody>
@@ -56,3 +67,14 @@
   </div>
 </section>
 <% include footer %>
+<script>
+  const deleteAdvert = (advertName, advertID) => {
+    if (
+      confirm(
+        `You will delete the advert ${advertName}, this operation cannot be undone.`
+      )
+    ) {
+      window.location.href = `/delete-advert/${advertID}`;
+    }
+  };
+</script>

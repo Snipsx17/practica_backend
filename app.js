@@ -94,6 +94,11 @@ app.post(
   advertsControllers.createAdvertForm
 );
 app.get(
+  '/delete-advert/:advertID',
+  sessionAuthMiddelware,
+  advertsControllers.delete
+);
+app.get(
   '/product/:productId',
 
   productController.productDetail
