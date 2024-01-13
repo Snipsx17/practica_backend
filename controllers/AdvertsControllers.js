@@ -49,7 +49,7 @@ class AdvertsController {
       const advertData = req.body;
       const path = '/images/anuncios/';
       advertData.owner = req.userID;
-      advertData.imagen = `${path}${req.file.filename}`;
+      advertData.imagen = `${req.file.filename}`;
       const newAdvert = Advert(advertData);
       const anuncioGuardado = await newAdvert.save();
       resizeImage(req.file.filename);
