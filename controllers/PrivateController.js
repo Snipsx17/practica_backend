@@ -3,12 +3,20 @@ const Advert = require('../models/Advert');
 
 class PrivateController {
   async index(req, res, next) {
-    const user = await User.findById(req.session.userID);
-    console.log(user);
-    const adverts = await Advert.find({ owner: user._id });
-    res.locals.email = user.email;
-    res.locals.adverts = adverts;
-    res.render('private');
+    try {
+      const user = await User.findById(req.session.userID);
+      if (!user) {
+        res.redirect('/');
+        return;
+      }
+
+      const adverts = await Advert.find({ owner: user._id });
+      res.locals.email = user.email;
+      res.locals.adverts = adverts;
+      res.render('private');
+    } catch (error) {
+      next(error);
+    }
   }
 }
 
