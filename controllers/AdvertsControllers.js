@@ -80,6 +80,35 @@ class AdvertsController {
       next(error);
     }
   }
+
+  async delete(req, res, next) {
+    try {
+      const userID = req.session.userID;
+      const advertId = req.params.advertID;
+
+      const advert = await Advert.findById(advertId);
+      if (!advert) {
+        console.warn(
+          `User ${userID} try to delete the advert ${advertId}, it doesn't exist`
+        );
+        next(createError(404, 'Product not found'));
+        return;
+      }
+
+      if (advert.owner.toString() !== userID) {
+        console.warn(
+          `User ${userID} try to delete the advert ${advertId}, it's not the owner`
+        );
+        next(createError(401, 'Unauthorize to delete the advert'));
+        return;
+      }
+
+      await Advert.deleteOne({ _id: advertId });
+      res.redirect('/private');
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = AdvertsController;
