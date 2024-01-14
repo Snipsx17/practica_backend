@@ -70,7 +70,7 @@ you can send creadencials:
 
 - header Authorization
 - body format '_x-www-form-urlencoded_'
-- query string \_/apiv1/authenticate?jwt={token}
+- query string /apiv1/authenticate?jwt={token}
 
 you will recibe a JWT token
 
