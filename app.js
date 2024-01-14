@@ -13,9 +13,11 @@ const AdvertsController = require('./controllers/AdvertsControllers');
 const ProductController = require('./controllers/ProductController');
 const AboutController = require('./controllers/AboutController');
 const PrivateController = require('./controllers/PrivateController');
+const LangController = require('./controllers/LangController');
 const authJwtMiddelware = require('./middelwares/authJwtMiddelware');
 const sessionAuthMiddelware = require('./middelwares/sessionAuthMiddelware');
 const upload = require('./lib/uploadConfig');
+const i18n = require('./lib/i18nConfigure');
 
 var app = express();
 
@@ -30,6 +32,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// inicializa i18n
+app.use(i18n.init);
 
 // inicializa la sesion en blanco
 app.use(
@@ -60,6 +65,7 @@ const homeController = new HomeController();
 const productController = new ProductController();
 const aboutController = new AboutController();
 const privateController = new PrivateController();
+const langController = new LangController();
 
 // resourses
 app.use('/public', express.static('public'));
@@ -81,6 +87,7 @@ app.post('/apiv1/authenticate', loginController.loginJWT);
 
 // website
 app.get('/', homeController.index);
+app.get('/change-locale/:locale', langController.setLang);
 app.get('/about', aboutController.index);
 app.get('/login', loginController.index);
 app.post('/login', loginController.login);

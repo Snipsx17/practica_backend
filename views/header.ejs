@@ -8,7 +8,7 @@
     />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Welcome to Nodepop</title>
+    <title><%= __('Welcome to Nodepop') %></title>
     <!-- Favicon-->
     <!-- Bootstrap icons-->
     <link
@@ -112,16 +112,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
+              <a class="nav-link active" aria-current="page" href="/"
+                ><%= __('Home') %></a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/about">About</a>
+              <a class="nav-link" href="/about"><%= __('About') %></a>
             </li>
             <% if(session.userID) { %>
             <li class="nav-item">
-              <a class="nav-link" href="/private">Private area</a>
+              <a class="nav-link" href="/private"><%= __('Private area') %></a>
             </li>
             <% } %>
+            <li class="nav-item">
+              <% getLocales().forEach( lang => { %>
+              <a href="/change-locale/<%= lang %>"><%= lang.toUpperCase() %></a
+              >&nbsp; %> <% }) %>
+            </li>
           </ul>
           <% if(!session.userID) { %>
           <button
@@ -130,7 +137,7 @@
             style="background-color: #a0d8b3; border-color: #a0d8b3"
           >
             <a href="/login" class="text-decoration-none text-white"
-              >Login <i class="bi bi-person"></i>
+              ><%= __('Login') %> <i class="bi bi-person"></i>
             </a>
           </button>
           <% } else { %>
@@ -140,7 +147,7 @@
             style="background-color: #a0d8b3; border-color: #a0d8b3"
           >
             <a href="/logout" class="text-decoration-none text-white"
-              >Logout<i class="bi bi-person"></i>
+              ><%= __('Logout') %><i class="bi bi-person"></i>
             </a>
           </button>
           <% } %>

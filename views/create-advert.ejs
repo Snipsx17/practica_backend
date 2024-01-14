@@ -3,7 +3,7 @@
 <header class="bg-dark py-1 mb-5">
   <div class="container px-4 px-lg-5 my-2">
     <div class="text-center text-white">
-      <h1 class="display-6 fw-bold">Create New Advert</h1>
+      <h1 class="display-6 fw-bold"><%= __('Create New Advert') %></h1>
     </div>
   </div>
 </header>
@@ -11,7 +11,7 @@
   <div class="container px-4 mb-5 w-50">
     <form method="POST" enctype="multipart/form-data">
       <div class="mb-3">
-        <label for="floatingInput">Name</label>
+        <label for="floatingInput"><%= __('Name') %></label>
         <input
           type="text"
           name="nombre"
@@ -28,7 +28,7 @@
           name="sale"
           id="sale"
         />
-        <label class="form-check-label" for="sale"> For sale </label>
+        <label class="form-check-label" for="sale"> <%= __('For sale') %> </label>
       </div>
       <div class="form-check">
         <input
@@ -39,11 +39,11 @@
           id="buy"
           checked
         />
-        <label class="form-check-label" for="buy"> For buy </label>
+        <label class="form-check-label" for="buy"> <%= __('For buy') %> </label>
       </div>
 
       <div class="mb-3">
-        <label for="floatingInput">Price</label>
+        <label for="floatingInput"><%= __('Price') %></label>
         <input
           type="number"
           name="precio"
@@ -53,7 +53,7 @@
       </div>
 
       <div class="mb-3">
-        <label for="floatingInput">Image</label>
+        <label for="floatingInput"><%= __('Image') %></label>
         <input
           type="file"
           name="imagen"
@@ -64,8 +64,8 @@
       </div>
 
       <div class="mb-3">
-        <label for="floatingInput">Tags</label>
-        <small>Separate by comas (,)</small>
+        <label for="floatingInput"><%= __('Tags') %></label>
+        <small><%= __('Separate by comas') %> (,)</small>
         <input
           type="text"
           name="tags"
@@ -79,7 +79,7 @@
         class="btn btn-success mt-3 px-4 py-2"
         style="background-color: #a0d8b3; border-color: #a0d8b3"
       >
-        Create
+        <%= __('Create') %>
       </button>
     </form>
   </div>

@@ -12,7 +12,7 @@
 <!-- Product section-->
 <section class="py-5">
   <div class="container px-4 px-lg-5 my-5">
-    <a href="/" class="d-block mb-3 text-decoration-none text-reset"><< Back</a>
+    <a href="/" class="d-block mb-3 text-decoration-none text-reset"><< <%= __('Back') %></a>
     <div class="row gx-4 gx-lg-5 align-items-center">
       <div class="col-md-6">
         <img
@@ -25,7 +25,7 @@
         <div class="small mb-1">
           <%= product.venta ? 'For sale' : 'For buy' %>
         </div>
-        <h1 class="display-5 fw-bolder">Price: <%= product.precio %> EUR</h1>
+        <h1 class="display-5 fw-bolder"><%= __('Price') %>: <%= product.precio %> EUR</h1>
         <div class="fs-5 mb-5">
           <span><%= product.tags.join(', ') %></span>
         </div>

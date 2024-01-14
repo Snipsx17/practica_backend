@@ -3,8 +3,8 @@
 <header class="bg-dark py-1 mb-5">
   <div class="container px-4 px-lg-5 my-2">
     <div class="text-center text-white">
-      <h1 class="display-6 fw-bold">Private zone</h1>
-      <p class="lead fw-normal text-white-50 mb-0">Welcome <%= email %></p>
+      <h1 class="display-6 fw-bold"><%= __('Private zone') %></h1>
+      <p class="lead fw-normal text-white-50 mb-0"><%= __('Welcome') %> <%= email %></p>
     </div>
   </div>
 </header>
@@ -13,24 +13,24 @@
   <div class="container px-4 mb-5">
     <div class="row gx-4 justify-content-center">
       <div class="col-lg-8">
-        <h2>Your adverts</h2>
+        <h2><%= __('Your adverts') %></h2>
         <button
           type="button"
           class="btn btn-success"
           style="background-color: #a0d8b3; border-color: #a0d8b3"
         >
           <a href="/create-advert" class="text-decoration-none text-reset"
-            >Create advert <i class="bi bi-pencil-square"></i>
+            ><%= __('Create advert') %> <i class="bi bi-pencil-square"></i>
           </a>
         </button>
         <table class="table">
           <thead>
             <tr>
               <th scope="col">ID</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Precio</th>
-              <th scope="col">tags</th>
-              <th scope="col">Imagen</th>
+              <th scope="col"><%= __('Name') %></th>
+              <th scope="col"><%= __('Price') %></th>
+              <th scope="col"><%= __('Tags') %></th>
+              <th scope="col"><%= __('Image') %></th>
               <th scope="col"></th>
             </tr>
           </thead>
@@ -54,7 +54,7 @@
                     href="javascript:void(0)"
                     onclick="deleteAdvert('<%= advert.nombre %>', '<%= advert._id %>')"
                     class="text-decoration-none text-white"
-                    >Delete <i class="bi bi-x-circle-fill"></i>
+                    ><%= __('Delete') %> <i class="bi bi-x-circle-fill"></i>
                   </a>
                 </button>
               </td>
